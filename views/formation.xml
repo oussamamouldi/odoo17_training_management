@@ -1,0 +1,304 @@
+<odoo>
+    <data>
+        <record id="candidat_view" model="ir.ui.view">
+          <field name="name">candidat.candidat.form</field>
+            <field name="model">candidat.candidat</field>
+            <field name="priority" eval="8" > </field>
+            <field name="arch" type="xml">
+                 <form string="candidat">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;"><field name="name" placeholder="Name" /></td>
+                                        <td style="padding-right:10px;"><field name="num_ins" placeholder="Inscription number" /></td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--  candidat_form-->
+    <record model="ir.actions.act_window" id="action_view_candidat_list">
+        <field name="name">Candidates list</field>
+        <field name="res_model">candidat.candidat</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Add new candidate </p>
+        </field>
+    </record>
+    <!-- end of action_view_candidat_list-->
+<record id="view_candidat_tree" model="ir.ui.view">
+            <field name="name">candidat.candidat.tree</field>
+            <field name="model">candidat.candidat</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="candidats">
+                    <field name="name" />
+                    <field name="num_ins" />
+                </tree>
+            </field>
+    </record>
+    <!-- end of view_candidat_tree-->
+
+
+<!--  FORMATEUR -->
+<!-- view_formateur_form-->
+    <record id="view_formateur_form" model="ir.ui.view">
+            <field name="name">formateur.formateur.form</field>
+            <field name="model">formateur.formateur</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="formateur">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;"><field name="matricule" required="1" placeholder="entrer matricule" /></td>
+                                        <td style="padding-right:10px;"><field name="name" placeholder="le nom" /></td>
+                                        <td style="padding-right:10px;"><field name="diplome" placeholder="le diplome" /></td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+    <!-- end view_formateur_form-->
+
+    <!-- view_formateur_tree-->
+    <record id="view_formateur_tree" model="ir.ui.view">
+            <field name="name">formateur.formateur.tree</field>
+            <field name="model">formateur.formateur</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="formateurs">
+                    <field name="matricule" />
+                    <field name="name" />
+                    <field name="diplome" />
+                </tree>
+            </field>
+    </record>
+    <!-- end of view_formateur_tree-->
+
+    <!-- action_view_formateur_list-->
+    <record model="ir.actions.act_window" id="action_view_formateur_list">
+        <field name="name">liste des formateurs</field>
+        <field name="res_model">formateur.formateur</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">ajouter un nouveau formateur. </p>
+        </field>
+    </record>
+    <!-- end of action_view_formateur_list-->
+
+<!-- FORMATION -->
+        <!-- view_formation_form-->
+    <record id="view_formation_form" model="ir.ui.view">
+            <field name="name">formation.formation.form</field>
+            <field name="model">formation.formation</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="formation">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;"><field name="name" required="1" placeholder="Name" /></td>
+                                        <td style="padding-right:10px;"><field name="price" placeholder="Price" /></td>
+                                        <td style="padding-right:10px;"><field name="category" placeholder="Category" /></td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+    <!-- end view_formation_form-->
+
+    <!-- view_formation_tree-->
+    <record id="view_formation_tree" model="ir.ui.view">
+            <field name="name">formation.formation.tree</field>
+            <field name="model">formation.formation</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="formations">
+                    <field name="name" />
+                    <field name="price" />
+                    <field name="category" />
+                </tree>
+            </field>
+    </record>
+    <!-- end of view_formation_tree-->
+
+    <!-- action_view_formation_list-->
+    <record model="ir.actions.act_window" id="action_view_formation_list">
+        <field name="name">liste of trainings</field>
+        <field name="res_model">formation.formation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create new training. </p>
+        </field>
+    </record>
+    <!-- end of action_view_formation_list-->
+
+<!--    SALLLLLEEEEE -->
+       <!-- ############################# salle ############################### -->
+
+    <!-- view_salle_form-->
+    <record id="view_salle_form" model="ir.ui.view">
+            <field name="name">salle.salle.form</field>
+            <field name="model">salle.salle</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="salle">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <table>
+                                    <tr>
+                                        <td style="padding-right:10px;"><field name="name" placeholder="Name" /></td>
+                                        <td style="padding-right:10px;"><field name="nb_places" placeholder="Number of plaices available" /></td>
+                                        <td style="padding-right:10px;"><field name="Free" placeholder="Is it free ??" /></td>
+                                    </tr>
+                                </table>
+                            </h1>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+    <!-- end view_salle_form-->
+
+    <!-- view_salle_tree-->
+    <record id="view_salle_tree" model="ir.ui.view">
+            <field name="name">salle.salle.tree</field>
+            <field name="model">salle.salle</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="salles">
+                    <field name="name" />
+                    <field name="nb_places" />
+                    <field name="Free" />
+                </tree>
+            </field>
+    </record>
+    <!-- end of view_salle_tree-->
+
+    <!-- action_view_salle_list-->
+    <record model="ir.actions.act_window" id="action_view_salle_list">
+        <field name="name">list of rooms</field>
+        <field name="res_model">salle.salle</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Add new room. </p>
+        </field>
+    </record>
+    <!-- end of action_view_salle_list-->
+
+<!--SESSION-->
+        <!-- view_session_form-->
+   <record id="view_session_form" model="ir.ui.view">
+    <field name="name">session.session.form</field>
+    <field name="model">session.session</field>
+    <field name="priority" eval="8" />
+    <field name="arch" type="xml">
+        <form string="Session">
+            <sheet>
+                <div class="oe_title">
+                    <h1>Session Information</h1>
+                </div>
+                <group>
+                    <field name="name" placeholder="Session Name"/>
+                    <field name="nb_participants" placeholder="Number of Participants"/>
+                    <field name="date_debut" placeholder="Start Date"/>
+                    <field name="date_fin" placeholder="End Date"/>
+                    <field name="duree" placeholder="Duration"/>
+                </group>
+
+                <group>
+                    <field name="formateur_ids" widget="many2many_tags" placeholder="Formateurs"/>
+                    <field name="formation_id" placeholder="Formation"/>
+                    <field name="categorie" placeholder="Category"/>
+                    <field name="salle_ids" widget="many2many_tags" placeholder="Salle"/>
+                    <field name="candidat_ids" widget="many2many_tags" placeholder="Candidat"/>
+                    <field name="state" placeholder="State"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+<!-- view-session-tree -->
+
+        <record id="view_session_tree" model="ir.ui.view">
+    <field name="name">session.session.tree</field>
+    <field name="model">session.session</field>
+    <field name="priority" eval="8" />
+    <field name="arch" type="xml">
+        <tree string="Sessions">
+            <field name="name" />
+            <field name="nb_participants" />
+            <field name="date_debut" />
+            <field name="date_fin" />
+            <field name="duree" />
+            <field name="salle_ids"/>
+            <field name="formateur_ids"/>
+            <field name="formation_id"/>
+            <field name="categorie"/>
+            <field name="candidat_ids"/>
+            <field name="state"/>
+
+        </tree>
+    </field>
+</record>
+
+<!-- view-session-action -->
+        <record model="ir.actions.act_window" id="action_view_session_list">
+    <field name="name">Liste des Sessions</field>
+    <field name="res_model">session.session</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[]</field>
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Ajouter une nouvelle session.</p>
+    </field>
+</record>
+
+
+
+
+
+            <!-- MENUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUmenu items-->
+    <menuitem id="header_menu" name="TM"/>
+        <menuitem id="menu_gestion_formation" name="Training management" parent='header_menu'/>
+
+
+
+            <menuitem id="menu_candidat" name="Candidates" parent="menu_gestion_formation"
+            action="action_view_candidat_list"/>
+
+             <menuitem id="menu_formateur" name="Trainee" parent="menu_gestion_formation"
+            action="action_view_formateur_list"/>
+
+            <menuitem id="menu_formation" name="Training" parent="menu_gestion_formation"
+            action="action_view_formation_list"/>
+
+            <menuitem id="menu_salle" name="Rooms" parent="menu_gestion_formation"
+            action="action_view_salle_list"/>
+        <menuitem id="menu_session" name="Sessions" parent="menu_gestion_formation"
+            action="action_view_session_list"/>
+
+
+           </data>
+</odoo>

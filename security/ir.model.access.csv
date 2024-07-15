@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_candidat_candidat,candidat_candidat,model_candidat_candidat,base.group_user,1,1,1,1
+
+
+access_formateur_formateur,formateur_formateur,model_formateur_formateur,base.group_user,1,1,1,1
+
+
+access_formation_formation,formation_formation,model_formation_formation,base.group_user,1,1,1,1
+
+
+access_salle_salle,salle_salle,model_salle_salle,base.group_user,1,1,1,1
+
+access_session_session,session.session,model_session_session,base.group_user,1,1,1,1
+
+
