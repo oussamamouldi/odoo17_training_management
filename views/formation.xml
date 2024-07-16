@@ -11,12 +11,15 @@
                             <h1>
                                 <table>
                                     <tr>
+                                        <label for="name" string="Name"/>
                                         <td style="padding-right:10px;"><field name="name" placeholder="Name" /></td>
-                                        <td style="padding-right:10px;"><field name="num_ins" placeholder="Inscription number" /></td>
                                     </tr>
                                 </table>
                             </h1>
                         </div>
+                        <group>
+                            <field name="num_ins" />
+                        </group>
                     </sheet>
                 </form>
             </field>
@@ -217,11 +220,14 @@
     <field name="arch" type="xml">
         <form string="Session">
             <sheet>
+
                 <div class="oe_title">
                     <h1>Session Information</h1>
+                    <button  name="resev_button" string="Reserver" type="object" class="btn-success" />
                 </div>
                 <group>
                     <field name="name" placeholder="Session Name"/>
+                    <field name="nb_participants_max" placeholder="Number of Participants max"/>
                     <field name="nb_participants" placeholder="Number of Participants"/>
                     <field name="date_debut" placeholder="Start Date"/>
                     <field name="date_fin" placeholder="End Date"/>
@@ -229,11 +235,28 @@
                 </group>
 
                 <group>
-                    <field name="formateur_ids" widget="many2many_tags" placeholder="Formateurs"/>
-                    <field name="formation_id" placeholder="Formation"/>
+                         <field name="formateur_ids">
+                        <tree>
+
+
+                        </tree>
+                    </field>
+                         <field name="formation_id">
+                        <tree>
+
+
+                        </tree>
+                    </field>
                     <field name="categorie" placeholder="Category"/>
-                    <field name="salle_ids" widget="many2many_tags" placeholder="Salle"/>
-                    <field name="candidat_ids" widget="many2many_tags" placeholder="Candidat"/>
+                    <field name="salle_ids">
+                        <tree>
+                        </tree>
+                    </field>
+                    <field name="candidat_ids">
+                        <tree>
+
+                        </tree>
+                    </field>
                     <field name="state" placeholder="State"/>
                 </group>
             </sheet>
@@ -249,6 +272,7 @@
     <field name="arch" type="xml">
         <tree string="Sessions">
             <field name="name" />
+            <field name="nb_participants_max" />
             <field name="nb_participants" />
             <field name="date_debut" />
             <field name="date_fin" />
@@ -259,6 +283,7 @@
             <field name="categorie"/>
             <field name="candidat_ids"/>
             <field name="state"/>
+
 
         </tree>
     </field>
@@ -274,8 +299,6 @@
         <p class="oe_view_nocontent_create">Ajouter une nouvelle session.</p>
     </field>
 </record>
-
-
 
 
 

@@ -10,7 +10,7 @@ class Candidat(models.Model):
     ]
 
     name = fields.Char( required=True)
-    num_ins = fields.Integer()
+    num_ins = fields.Integer("Inscription number")
     session = fields.Many2many('session.session')
 
 

@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 
 class Session(models.Model):
@@ -8,6 +8,7 @@ class Session(models.Model):
 
     name = fields.Char(string='Session Name', required=True)
     nb_participants = fields.Integer(string='Number of Participants')
+    nb_participants_max = fields.Integer(string='Number of Participants max', required=True)
     date_debut = fields.Datetime(string='Start Date')
     date_fin = fields.Datetime(string='End Date')
     duree = fields.Char(string='Duration', compute='compute_duree')
@@ -19,6 +20,15 @@ class Session(models.Model):
     salle_ids = fields.Many2many('salle.salle', 'session_salle', column1='session_id', column2='salle_id', string='Rooms')
     candidat_ids = fields.Many2many('candidat.candidat', 'session_candidat', column1='session_id', column2='candidat_id', string='Candidates')
     formateur_ids = fields.Many2many('formateur.formateur', 'session_formateur', column1='session_id', column2='formateur_id', string='Trainee')
+
+    # def compute_nb_max(self):
+    #     for session in self:
+    #         if session.nb_participants_max>0 :
+    #             return session.nb_participants_max
+    #         else :
+    #             session.nb_participants_max = False
+
+
 
     @api.depends('date_debut', 'date_fin')
     def compute_duree(self):
@@ -133,3 +143,30 @@ class Session(models.Model):
                 #         salle.free = False
                 #     else:
                 #         salle.free = True
+
+
+    @api.constrains('nb_participants_max')
+    def _check_nb_participants_max(self):
+        for session in self:
+            if session.nb_participants_max <= 0:
+                raise ValidationError("The maximum number of participants must be greater than 0.")
+    def resev_button(self):
+        candidate_id = 6
+        for session in self:
+            if session.nb_participants >= session.nb_participants_max:
+                raise ValidationError("No place available!")
+
+            elif candidate_id in session.candidat_ids.ids:
+                raise ValidationError("Candidate already assigned to this session")
+
+            else:
+                session.nb_participants += 1
+                session.candidat_ids = [(4, candidate_id)]
+
+
+
+
+
+
+
+
